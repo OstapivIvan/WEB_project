@@ -23,3 +23,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+//Плавний перехід до елементу з навінації
+const scrollToTopOfElement = element => {
+    window.scrollTo({
+        behavior: 'smooth',
+        top: element.offsetTop,
+    });
+};
+
+const menuItems = document.querySelectorAll('.menu-items li a');
+menuItems.forEach(item => {
+    item.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = item.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        scrollToTopOfElement(targetElement);
+    });
+});
