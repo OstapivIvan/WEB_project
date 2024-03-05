@@ -41,3 +41,12 @@ menuItems.forEach(item => {
         scrollToTopOfElement(targetElement);
     });
 });
+
+const setMaxDate = (minAge) => {
+    const currentDate = new Date();
+    currentDate.setFullYear(currentDate.getFullYear() - minAge);
+    const formattedDate = currentDate.toISOString().slice(0, 10);
+    document.getElementById("dob").setAttribute("max", formattedDate);
+};
+
+setMaxDate(16);
