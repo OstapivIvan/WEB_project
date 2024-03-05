@@ -225,79 +225,72 @@
             
             
             
-            <div id="userForm">
-                <h3>Fill Out the Form:</h3>
-                <form action="">
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        maxlength="30"
-                        required
-                    >
-                    <br>
-                    <input type = "email"
-                        name = "email"
-                        placeholder="Email"
-                        required
-                    >
-                    <br>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        maxlength="50"
-                        required
-                    >
-                    <br>
-            
-                    Favorite Leagues: <br >
-                    <input type="checkbox" id="uefa" name="uefa" value="UEFA">
-                    <label for="uefa">UEFA Champions League</label><br>
-                    <input type="checkbox" id="epl" name="epl" value="EPL">
-                    <label for="epl">English Premier League</label><br>
-                    <input type="checkbox" id="laliga" name="laliga" value="La Liga">
-                    <label for="laliga">La Liga</label><br>
-                    <input type="checkbox" id="seriea" name="seriea" value="Serie A">
-                    <label for="seriea">Serie A</label><br>
-                    <input type="checkbox" id="bundesliga" name="bundesliga" value="Bundesliga">
-                    <label for="bundesliga">Bundesliga</label>
+            <div id="userForm"> 
+                <h3>Fill out an application to join the team:</h3> 
+                <form id="surveyForm"> 
+                    <input type="text" name="fullName" placeholder="Full name" maxlength="30" required> 
+                    <br> 
 
-                    
+                    <input type = "email" name = "email" placeholder="Email" required> 
+                    <br>
+
+                    <label for="phone">Phone number:</label><br>
+                    <input type="tel" id="phone" name="phone" pattern="+\d{2} \d{3}-\d{3}-\d{4}" placeholder="+380123456789" required>
                     <br><br>
-                    Receive Email Notifications: <br>
-                    <input type="radio" id="yes" name="yes/no" value="yes" checked>
-                    <label for="yes">Yes</label><br>
-                    <input type="radio" id="no" name="yes/no" value="no">
-                    <label for="no">No</label><br><br>
-                    <label for="country">Country</label><br>
-                    <select id="country" name="country">
-                        <option value="" disabled selected>Select Country</option>
-                        <option value="ukraine">Ukraine</option>
-                        <option value="usa">USA</option>
-                        <option value="poland">Poland</option>
-                        <option value="spain">Spain</option>
-                        <option value="france">France</option>
-                        <option value="uk">United Kingdom</option>
-                        <option value="germany">Germany</option>
-                        <option value="other">Other</option>
-                    </select>
+
+                    <label for="dob">Date of Birth:(Minimum 16 y.o.)</label><br> 
+                    <input type="date" id="dob" name="dob" required max="2023-12-31"><br> 
+                    <br> 
+ 
+                    <label for="foot">Preferred Foot:</label><br> 
+                    <input type="radio" id="leftFoot" name="foot" value="Left" required> Left 
+                    <input type="radio" id="rightFoot" name="foot" value="Right"> Right
+                    <input type="radio" id="bothFeet" name="foot" value="Both feet"> Both 
+                    <br><br> 
+
+                    <label for="height">Height (in cm):</label><br>
+                    <input type="number" id="height" name="height" min="100" max="250" value="175" required>
+                    <br><br>
+                    <label for="injuryRisk">Injury Risk (Low to High):</label><br>
+                    <input type="range" id="injuryRisk" name="injuryRisk" min="1" max="5" value="3" oninput="this.nextElementSibling.value = this.value" required>
+                    <output>3</output>
 
                     <br><br>
-                
-                    <textarea cols="35" rows="5" wrap="virtual"></textarea><br>
-                    
-                    <label for="file">Attach File</label>
-                    <input type="file" name="load" id="file" size="50">
-                    
+
+                    <label for="position">Position:</label><br> 
+                    <select id="position" name="position" required>  
+                        <option value="" disabled selected>Select Position</option> 
+                        <option value="goalkeeper">Goalkeeper</option> 
+                        <option value="defender">Defender</option> 
+                        <option value="midfielder">Midfielder</option> 
+                        <option value="winger">Winger</option> 
+                        <option value="forward">Forward</option> 
+                    </select> 
+
                     <br>
+
+                    <label>Favorite Playstyle:</label><br>
+                    <input type="checkbox" id="possession" name="playstyle" value="possession" required>
+                    <label for="possession">Possession</label><br>
+                    <input type="checkbox" id="counterattack" name="playstyle" value="counterattack">
+                    <label for="counterattack">Counterattack</label><br>
+                    <input type="checkbox" id="highpress" name="playstyle" value="highpress">
+                    <label for="highpress">High Press</label><br>
+                    <input type="checkbox" id="tiki-taka" name="playstyle" value="tiki-taka">
+                    <label for="tiki-taka">Tiki-Taka</label><br>
+ 
                     <br>
-                    <div class="button-container">
-                    <input type="submit" name="submit" value="Send">
-                        <input type="reset" name="reset" value="Clear">
-                    </div>
-                </form>
+                 
+                    <textarea cols="35" rows="5" wrap="virtual" placeholder="Write a litle bit about your experiance and playstyle" required></textarea>
+                    <br><br>
+
+                    <div class="button-container"> 
+                    <input type="submit" name="submit" value="Send"> 
+                        <input type="reset" name="reset" value="Clear"> 
+                    </div> 
+                </form> 
             </div>
+
         </main>
 
         <footer>
