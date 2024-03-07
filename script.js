@@ -50,3 +50,48 @@ const setMaxDate = (minAge) => {
 };
 
 setMaxDate(16);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('surveyForm');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const dob = document.getElementById('dob').value;
+        const foot = document.querySelector('input[name="foot"]:checked').value;
+        const height = document.getElementById('height').value;
+        const injuryRisk = document.getElementById('injuryRisk').value;
+        const position = document.getElementById('position').value;
+        const playstyle = document.querySelectorAll('input[name="playstyle"]');
+        const selectedPlaystyles = Array.from(playstyle)
+            .filter(playstyle => playstyle.checked)
+            .map(playstyle => playstyle.value);
+
+        if (selectedPlaystyles.length === 0) {
+            alert('Please select at least one playstyle.');
+            return
+        }
+
+        const formData = {
+            fullName: fullName,
+            email: email,
+            phone: phone,
+            dob: dob,
+            foot: foot,
+            height: height,
+            injuryRisk: injuryRisk,
+            position: position,
+            playstyle: selectedPlaystyles
+        };
+
+        let existingData = JSON.parse(localStorage.getItem('surveyData')) || [];
+        existingData.push(formData);
+        localStorage.setItem('surveyData', JSON.stringify(existingData));
+
+        alert('Your survey data has been saved successfully.');
+    });
+});
+
