@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const injuryRisk = document.getElementById('injuryRisk').value;
         const position = document.getElementById('position').value;
         const playstyle = document.querySelectorAll('input[name="playstyle"]');
+        const experiance = document.getElementById('experiance').value;
         const selectedPlaystyles = Array.from(playstyle)
             .filter(playstyle => playstyle.checked)
             .map(playstyle => playstyle.value);
@@ -84,7 +85,8 @@ document.addEventListener('DOMContentLoaded', function () {
             height: height,
             injuryRisk: injuryRisk,
             position: position,
-            playstyle: selectedPlaystyles
+            playstyle: selectedPlaystyles,
+            experiance: experiance
         };
 
         let existingData = JSON.parse(localStorage.getItem('surveyData')) || [];
