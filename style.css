@@ -179,6 +179,27 @@ footer {
   margin-top: 20px;
 }
 
+#allParticipantsList {
+  display: flex;
+  justify-content: center;
+}
+
+#participantsFilter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#participantsFilter > div {
+  margin: 10px;
+  padding: 10px;
+  border: 3px solid #02745d;
+  border-radius: 5px;
+  max-width: 300px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+
 #goldenBall,
 #worldCup {
   border: solid 3px #009879;
@@ -351,5 +372,9 @@ input[type=reset]:hover {
   }
   .show {
     display: block;
+  }
+  #allParticipantsList {
+    justify-content: start;
+    overflow-x: auto;
   }
 }/*# sourceMappingURL=style.css.map */
