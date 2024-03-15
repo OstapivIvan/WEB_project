@@ -65,5 +65,26 @@ function displayQuestion(index) {
 }
 
 
+function nextQuestion() {
+    if (currentQuestionIndex < questionsData.length - 1) {
+        currentQuestionIndex++;
+        displayQuestion(currentQuestionIndex);
+    }
+}
 
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        displayQuestion(currentQuestionIndex);
+
+    }
+}
+
+document.getElementById('next').addEventListener('click', () => {
+    nextQuestion();
+});
+
+document.getElementById('prev').addEventListener('click', () => {
+    prevQuestion();
+});
 
