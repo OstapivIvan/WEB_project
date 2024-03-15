@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @keyframes image_animation {
   0% {
     opacity: 0;
@@ -218,6 +219,35 @@ footer {
   font-size: 1.5rem;
 }
 
+#quizContainer {
+  background-color: #f3f3f3;
+  max-width: 500px;
+  margin: 25px auto 25px;
+  padding: 20px;
+  border: solid 3px #009879;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex; /* Зміна: тепер використовує flex */
+  flex-direction: column; /* Зміна: вертикальне розташування */
+  align-items: flex-start; /* Зміна: вирівнювання елементів по центру */
+  animation: fade_in 1s ease forwards;
+}
+#quizContainer button {
+  width: 105px;
+}
+
+#quiz {
+  margin-bottom: 20px;
+}
+
+#navigation {
+  margin-bottom: 20px;
+}
+
+#results {
+  margin-bottom: 20px;
+}
+
 .image-container {
   width: 60vw;
   height: 30vw;
@@ -292,7 +322,8 @@ input[type=number] {
 }
 
 input[type=submit],
-input[type=reset] {
+input[type=reset],
+button {
   font-size: 14px;
   padding: 10px 25px;
   background-color: #009879;
@@ -303,7 +334,8 @@ input[type=reset] {
   margin-right: 15px;
 }
 input[type=submit]:hover,
-input[type=reset]:hover {
+input[type=reset]:hover,
+button:hover {
   background-color: #02745d;
 }
 

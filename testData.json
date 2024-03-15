@@ -1,0 +1,109 @@
+{
+    "questions": [
+        {
+            "question": "Who won the FIFA WC 2022?",
+            "answers": [
+                {
+                    "answer": "France",
+                    "correct": false
+                },
+                {
+                    "answer": "Argentina",
+                    "correct": true
+                },
+                {
+                    "answer": "Ukraine",
+                    "correct": false
+                },
+                {
+                    "answer": "Italy",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "Who won the Golden Ball in 2004?",
+            "answers": [
+                {
+                    "answer": "Andriy Shevchenko",
+                    "correct": true
+                },
+                {
+                    "answer": "Deco",
+                    "correct": false
+                },
+                {
+                    "answer": "Ronaldinho",
+                    "correct": false
+                },
+                {
+                    "answer": "Thierry Henry",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "Who won the UEFA Cup in 2009'?",
+            "answers": [
+                {
+                    "answer": "Shakhtar Donentsk",
+                    "correct": true
+                },
+                {
+                    "answer": "Dynamo Kyiv",
+                    "correct": false
+                },
+                {
+                    "answer": "PSG",
+                    "correct": false
+                },
+                {
+                    "answer": "Sevilla",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "Who won the UEFA Champions Legue in 2023?",
+            "answers": [
+                {
+                    "answer": "Real Madrid",
+                    "correct": false
+                },
+                {
+                    "answer": "Inter Milan",
+                    "correct": false
+                },
+                {
+                    "answer": "Manchester City",
+                    "correct": true
+                },
+                {
+                    "answer": "Bayern Munich",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "question": "Who won the UEFA Euro 2020?",
+            "answers": [
+                {
+                    "answer": "Italy",
+                    "correct": true
+                },
+                {
+                    "answer": "England",
+                    "correct": false
+                },
+                {
+                    "answer": "Ukraine",
+                    "correct": false
+                },
+                {
+                    "answer": "France",
+                    "correct": false
+                }
+            ]
+        }
+    ]
+}
