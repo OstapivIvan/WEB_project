@@ -80,11 +80,24 @@ function prevQuestion() {
     }
 }
 
-document.getElementById('next').addEventListener('click', () => {
+nextButton.addEventListener('click', () => {
     nextQuestion();
 });
 
-document.getElementById('prev').addEventListener('click', () => {
+prevButton.addEventListener('click', () => {
     prevQuestion();
 });
 
+//click event to the submit buttom
+submitButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    if (userAnswers.length === questionsData.length) {
+        if (confirm("Are you sure you want to submit?")) {
+            resultMode = true
+            displayResults(userAnswers);
+        }
+    } else {
+        alert("Please answer all questions before submitting.");
+    }
+});
