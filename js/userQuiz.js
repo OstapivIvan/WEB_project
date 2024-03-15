@@ -126,7 +126,7 @@ function displayResults(userAnswers) {
     resultsContainer.appendChild(totalResultElement);
 }
 
-//click event to the submit buttom
+//click event to the submit button
 submitButton.addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -137,5 +137,17 @@ submitButton.addEventListener('click', (event) => {
         }
     } else {
         alert("Please answer all questions before submitting.");
+    }
+});
+
+//resetting quiz
+resetButton.addEventListener('click', (event) => {
+    if (confirm("Are you sure you reset quiz?")) {
+        event.preventDefault();
+        userAnswers = [];
+        currentQuestionIndex = 0;
+        resultMode = false;
+        displayQuestion(currentQuestionIndex);
+        resultsContainer.innerHTML = '';
     }
 });
