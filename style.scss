@@ -234,6 +234,38 @@ footer {
         font-size: 1.5rem;
     }
 }
+#quizContainer {
+    background-color: $bg_light;
+    max-width: 500px;
+    margin: 25px  auto 25px;
+    padding: 20px;
+    border: solid 3px $bg_primary;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Зміна: тепер використовує flex */
+    flex-direction: column; /* Зміна: вертикальне розташування */
+    align-items: flex-start; /* Зміна: вирівнювання елементів по центру */
+    animation: fade_in 1s ease forwards;
+    button {
+        width: 105px;
+    }
+    
+}
+
+#quiz {
+    margin-bottom: 20px;
+}
+
+#navigation {
+    margin-bottom: 20px;
+}
+
+
+#results {
+    margin-bottom: 20px;
+}
+
+
 .image-container {
     width: 60vw;
     height: 30vw;
@@ -302,7 +334,8 @@ input[type=number] {
   border-radius: 5px;
 }
 input[type=submit],
-input[type=reset] {
+input[type=reset],
+button {
     font-size: 14px;
     padding: 10px 25px;
     background-color: $bg_primary;
