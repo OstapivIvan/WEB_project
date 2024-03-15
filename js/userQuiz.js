@@ -82,11 +82,49 @@ function prevQuestion() {
 
 nextButton.addEventListener('click', () => {
     nextQuestion();
+    if (resultMode) {
+        displayResults(userAnswers);
+    }
 });
 
 prevButton.addEventListener('click', () => {
     prevQuestion();
+    if (resultMode) {
+        displayResults(userAnswers);
+    }
 });
+
+function displayResults(userAnswers) {
+    resultsContainer.innerHTML = '';
+    //data for specific question by index
+    const questionObj = questionsData[currentQuestionIndex];
+    const correctAnswerIndex = questionObj.answers.findIndex(answer => answer.correct);
+    const selectedAnswer = userAnswers[currentQuestionIndex];
+    const isCorrect = selectedAnswer === correctAnswerIndex;
+
+    //information about the question and answer 
+    const resultElement = document.createElement('div');
+    resultElement.classList.add('result');
+    resultElement.textContent = `Results`;
+    resultElement.textContent = `${currentQuestionIndex + 1}.Your answer is ${isCorrect ? 'correct (1 point)' : 'incorrect (0 point)'}. Your selected answer: ${questionObj.answers[selectedAnswer].answer}. Correct answer: ${questionObj.answers[correctAnswerIndex].answer}`;
+    //count correct answsers
+    let correctCount = 0;
+    userAnswers.forEach((selectedAnswer, index) => {
+        if (selectedAnswer === questionsData[index].answers.findIndex(answer => answer.correct)) {
+            correctCount++;
+        }
+    });
+
+    //total result
+    const totalQuestions = questionsData.length;
+    const percentage = (correctCount / totalQuestions) * 100;
+    const totalResultElement = document.createElement('div');
+    totalResultElement.classList.add('total-result');
+    totalResultElement.textContent = `Total: ${correctCount} out of ${totalQuestions} questions correct(${percentage.toFixed(2)} %). Total: ${correctCount} point `;
+
+    resultsContainer.appendChild(resultElement);
+    resultsContainer.appendChild(totalResultElement);
+}
 
 //click event to the submit buttom
 submitButton.addEventListener('click', (event) => {
