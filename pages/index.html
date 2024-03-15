@@ -290,12 +290,23 @@
                     </div> 
                 </form> 
             </div>
-
+            <div id="quizContainer">
+                <h2>Football quiz of 5 questions</h2>
+                <div id="quiz"></div>
+                <div id="navigation">
+                    <button id="prev">Previous</button>
+                    <button id="next">Next</button>
+                </div>
+                <div id="results"></div>
+                <input type="submit" id="quizSubmit" value="Submit Answers"> 
+                <input type="reset" id="quizReset" value="Reset Answers"> 
+            </div>
         </main>
 
         <footer>
             <p>&copy; <span id="currentYear"></span> All rights reserved. FootballScore&reg;</p>
         </footer>
-        <script src="script.js"></script>
+        <script src="/js/script.js"></script>
+        <script src="/js/userQuiz.js"></script>
     </body>
 </html>
