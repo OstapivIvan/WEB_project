@@ -16,6 +16,12 @@
         </header>
         <main>
             <div id="game"></div>
+            <div style="text-align:center;width:480px;">
+                <button onmousedown="moveup()" onmouseup="clearmove()" >UP</button><br><br>
+                <button onmousedown="moveleft()" onmouseup="clearmove()" >LEFT</button>
+                <button onmousedown="moveright()" onmouseup="clearmove()" >RIGHT</button><br><br>
+                <button onmousedown="movedown()" onmouseup="clearmove()" >DOWN</button>
+            </div>
         </main>
         <footer>
             <p>&copy; <span id="currentYear"></span> All rights reserved. FootballScore&reg;</p>
