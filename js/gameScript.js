@@ -3,7 +3,31 @@ var myObstacles = [];
 var myScore;
 
 function startGame() {
+    myGamePiece = new component(30, 30, "red", 10, 120);
+    myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+    myGameArea.start();
 }
+
+var myGameArea = {
+    canvas: document.createElement("canvas"),
+    start: function () {
+        var gameDiv = document.getElementById("game");
+        gameDiv.appendChild(this.canvas);
+
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+    },
+    clear: function () {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop: function () {
+        clearInterval(this.interval);
+    }
+}
+
 function component(width, height, color, x, y, type) {
     this.type = type;
     this.width = width;
