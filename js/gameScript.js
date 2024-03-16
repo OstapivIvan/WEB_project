@@ -4,6 +4,8 @@ var myScore;
 var bonusScore = 0;
 var myBonuses = [];
 var gameResults = [];
+var topResultsDiv = document.getElementById("topResults");
+var bottomResultsDiv = document.getElementById("bottomResults");
 
 function loadGame() {
     myGameArea.setup();
@@ -40,6 +42,7 @@ var myGameArea = {
         this.context.font = "30px Consolas";
         this.context.fillText("Game Over", 150, 150);
         gameOver();
+        loadGameResults();
     }
 }
 function restartGame() {
@@ -220,3 +223,39 @@ function gameOver() {
     gameResults.push(Math.floor((myGameArea.frameNo + bonusScore) / 10));
     saveGameResults();
 }
+
+function displayGameResults() {
+    var sortedResults = gameResults.sort((a, b) => b - a);
+    var topResults = sortedResults.slice(0, 3);
+    var bottomResults = sortedResults.slice(-3);
+
+    var topList = topResultsDiv.querySelector("ol") || topResultsDiv.appendChild(document.createElement("ol"));
+    topList.innerHTML = "";
+
+    var bottomList = bottomResultsDiv.querySelector("ol") || bottomResultsDiv.appendChild(document.createElement("ol"));
+    bottomList.innerHTML = "";
+
+    //display top 3
+    topResults.forEach((result) => {
+        var resultItem = document.createElement("li");
+        resultItem.textContent = result;
+        topList.appendChild(resultItem);
+    });
+
+    //display bottom 3
+    bottomResults.forEach((result) => {
+        var resultItem = document.createElement("li");
+        resultItem.textContent = result;
+        bottomList.appendChild(resultItem);
+    });
+}
+
+function loadGameResults() {
+    var savedResults = localStorage.getItem("gameResults");
+    if (savedResults) {
+        gameResults = JSON.parse(savedResults);
+        displayGameResults();
+    }
+}
+
+loadGameResults();
