@@ -352,6 +352,24 @@ button:hover {
   background-color: #11695e;
 }
 
+#game {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 40px 0;
+}
+#game #gameNav {
+  text-align: center;
+  width: 480px;
+}
+#game #gameButtons {
+  display: flex;
+  margin-bottom: 10px;
+}
+#game #gameButtons button {
+  width: 95px;
+}
+
 canvas {
   border: 1px solid #d3d3d3;
   background-color: #f1f1f1;
