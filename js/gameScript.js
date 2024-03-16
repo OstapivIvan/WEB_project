@@ -1,6 +1,8 @@
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+var bonusScore = 0;
+var myBonuses = [];
 
 function loadGame() {
     myGameArea.setup();
@@ -42,6 +44,8 @@ function restartGame() {
     restartButton.style.display = "none";
     myGameArea.clear();
     myObstacles = [];
+    myBonuses = [];
+    bonusScore = 0;
     myScore = 0;
     startGame();
 }
@@ -101,7 +105,7 @@ function updateGameArea() {
     var x, height, gap, minHeight, maxHeight, minGap, maxGap;
     myGameArea.clear();
     myGameArea.frameNo += 1;
-    //generate obstacles
+    //generate components
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
         x = myGameArea.canvas.width;
         minHeight = 20;
@@ -112,9 +116,11 @@ function updateGameArea() {
         gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
         myObstacles.push(new component(10, height, "green", x, 0));
         myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
+        generateBonus();
     }
 
     updateObstacles()
+    updateBonuses()
     checkCollision();
     myScore.text = "SCORE: " + Math.floor((myGameArea.frameNo + bonusScore) / 10);
     myScore.update();
@@ -130,15 +136,53 @@ function updateObstacles() {
     }
 }
 
+function updateBonuses() {
+    for (var i = 0; i < myBonuses.length; i++) {
+        myBonuses[i].speedX = -1;
+        myBonuses[i].newPos();
+        myBonuses[i].update();
+    }
+}
+
+function generateBonus() {
+    var x = myGameArea.canvas.width;
+    var bonusX, bonusY;
+    do {
+        bonusX = x;
+        bonusY = Math.floor(Math.random() * (myGameArea.canvas.height - 10));
+    } while (checkOverlap(bonusX, bonusY, 10, 10)); // check for overlap with other components
+    // Add a new bonus component in yellow color
+    myBonuses.push(new component(10, 10, "yellow", bonusX, bonusY));
+}
 function checkCollision() {
+    // check for collision with obstacle components
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
             myGameArea.stop();
             return;
         }
     }
+    // check for collision with bonus components
+    for (i = 0; i < myBonuses.length; i += 1) {
+        if (myGamePiece.crashWith(myBonuses[i])) {
+            bonusScore += 100;
+            console.log(bonusScore)
+            myBonuses.splice(i, 1);
+        }
+    }
 }
-
+// check for overlap
+function checkOverlap(x, y, width, height) {
+    for (var i = 0; i < myObstacles.length; i++) {
+        if (x < myObstacles[i].x + myObstacles[i].width &&
+            x + width > myObstacles[i].x &&
+            y < myObstacles[i].y + myObstacles[i].height &&
+            y + height > myObstacles[i].y) {
+            return true;
+        }
+    }
+    return false;
+}
 function everyinterval(n) {
     if ((myGameArea.frameNo / n) % 1 == 0) { return true; }
     return false;
