@@ -380,11 +380,21 @@ button {
       }
     }
   }
-  
+#gameAndResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#game,
+#gameResults {
+    width: 50%; 
+}
 canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
-  }
+}
+
 @media screen and (max-width: 800px) {
     #userForm {
         margin: 20px;
