@@ -99,12 +99,6 @@ function updateGameArea() {
     }
     //check for collision with obstacles
     var x, height, gap, minHeight, maxHeight, minGap, maxGap;
-    for (i = 0; i < myObstacles.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles[i])) {
-            myGameArea.stop();
-            return;
-        }
-    }
     myGameArea.clear();
     myGameArea.frameNo += 1;
     //generate obstacles
@@ -119,15 +113,30 @@ function updateGameArea() {
         myObstacles.push(new component(10, height, "green", x, 0));
         myObstacles.push(new component(10, x - height - gap, "green", x, height + gap));
     }
-    for (i = 0; i < myObstacles.length; i += 1) {
+
+    updateObstacles()
+    checkCollision();
+    myScore.text = "SCORE: " + Math.floor((myGameArea.frameNo + bonusScore) / 10);
+    myScore.update();
+    myGamePiece.newPos();
+    myGamePiece.update();
+}
+
+function updateObstacles() {
+    for (var i = 0; i < myObstacles.length; i++) {
         myObstacles[i].speedX = -1;
         myObstacles[i].newPos();
         myObstacles[i].update();
     }
-    myScore.text = "SCORE: " + myGameArea.frameNo;
-    myScore.update();
-    myGamePiece.newPos();
-    myGamePiece.update();
+}
+
+function checkCollision() {
+    for (i = 0; i < myObstacles.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles[i])) {
+            myGameArea.stop();
+            return;
+        }
+    }
 }
 
 function everyinterval(n) {
