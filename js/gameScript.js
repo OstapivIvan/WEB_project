@@ -2,7 +2,12 @@ var myGamePiece;
 var myObstacles = [];
 var myScore;
 
+function loadGame() {
+    myGameArea.setup();
+
+}
 function startGame() {
+    document.getElementById("startButton").style.display = "none";
     myGamePiece = new component(30, 30, "red", 10, 120);
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     myGameArea.start();
@@ -10,13 +15,15 @@ function startGame() {
 
 var myGameArea = {
     canvas: document.createElement("canvas"),
-    start: function () {
-        var gameDiv = document.getElementById("game");
+    setup: function () {
+        var gameDiv = document.getElementById("gameArea");
         gameDiv.appendChild(this.canvas);
 
         this.canvas.width = 480;
         this.canvas.height = 270;
         this.context = this.canvas.getContext("2d");
+    },
+    start: function () {
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
     },
@@ -25,9 +32,19 @@ var myGameArea = {
     },
     stop: function () {
         clearInterval(this.interval);
+        restartButton.style.display = "block";
+        this.context.fillStyle = "black";
+        this.context.font = "30px Consolas";
+        this.context.fillText("Game Over", 150, 150);
     }
 }
-
+function restartGame() {
+    restartButton.style.display = "none";
+    myGameArea.clear();
+    myObstacles = [];
+    myScore = 0;
+    startGame();
+}
 function component(width, height, color, x, y, type) {
     this.type = type;
     this.width = width;

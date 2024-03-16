@@ -10,17 +10,24 @@
             
             </style>
     </head>
-    <body onload="startGame()">
+    <body onload="loadGame()">
         <header>  
             <a href="/pages/game.html" title="Go to website"><h1 id="nav-h1">FootballScore</h1></a>
         </header>
         <main>
-            <div id="game"></div>
-            <div style="text-align:center;width:480px;">
-                <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
-                <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
-                <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
-                <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+            <div id="game">
+                <div id="gameArea">
+                </div>
+                <div id = "gameButtons">
+                    <button id="startButton" onclick="startGame()">Start</button>
+                    <button id="restartButton" onclick="restartGame()" style="display:none;">Restart</button>
+                </div>
+                <div id="gameNav">
+                    <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+                    <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+                    <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+                    <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+                </div>
             </div>
         </main>
         <footer>
