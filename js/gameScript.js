@@ -69,6 +69,18 @@ function component(width, height, color, x, y, type) {
 }
 
 function updateGameArea() {
+    var boundaryLeft = new component(1, myGameArea.canvas.height, "transparent", 0, 0);
+    var boundaryRight = new component(1, myGameArea.canvas.height, "transparent", myGameArea.canvas.width - 1, 0);
+    var boundaryTop = new component(myGameArea.canvas.width, 1, "transparent", 0, 0);
+    var boundaryBottom = new component(myGameArea.canvas.width, 1, "transparent", 0, myGameArea.canvas.height - 1);
+
+    //check for collision with canvas borders
+    if (myGamePiece.crashWith(boundaryLeft) || myGamePiece.crashWith(boundaryRight) ||
+        myGamePiece.crashWith(boundaryTop) || myGamePiece.crashWith(boundaryBottom)) {
+        myGameArea.stop();
+        return;
+    }
+    //check for collision with obstacles
     var x, height, gap, minHeight, maxHeight, minGap, maxGap;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
@@ -78,6 +90,7 @@ function updateGameArea() {
     }
     myGameArea.clear();
     myGameArea.frameNo += 1;
+    //generate obstacles
     if (myGameArea.frameNo == 1 || everyinterval(150)) {
         x = myGameArea.canvas.width;
         minHeight = 20;
