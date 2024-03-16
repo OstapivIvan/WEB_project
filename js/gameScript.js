@@ -3,6 +3,7 @@ var myObstacles = [];
 var myScore;
 var bonusScore = 0;
 var myBonuses = [];
+var gameResults = [];
 
 function loadGame() {
     myGameArea.setup();
@@ -38,6 +39,7 @@ var myGameArea = {
         this.context.fillStyle = "black";
         this.context.font = "30px Consolas";
         this.context.fillText("Game Over", 150, 150);
+        gameOver();
     }
 }
 function restartGame() {
@@ -207,4 +209,14 @@ function moveright() {
 function clearmove() {
     myGamePiece.speedX = 0;
     myGamePiece.speedY = 0;
+}
+
+function saveGameResults() {
+    localStorage.setItem("gameResults", JSON.stringify(gameResults));
+}
+
+// Save game results when the game ends
+function gameOver() {
+    gameResults.push(Math.floor((myGameArea.frameNo + bonusScore) / 10));
+    saveGameResults();
 }
