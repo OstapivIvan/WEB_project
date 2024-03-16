@@ -352,6 +352,40 @@ button:hover {
   background-color: #11695e;
 }
 
+#game {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 40px 0;
+}
+#game #gameNav {
+  text-align: center;
+  width: 480px;
+}
+#game #gameButtons {
+  display: flex;
+  margin-bottom: 10px;
+}
+#game #gameButtons button {
+  width: 95px;
+}
+
+#gameAndResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#game,
+#gameResults {
+  width: 50%;
+}
+
+canvas {
+  border: 1px solid #d3d3d3;
+  background-color: #f1f1f1;
+}
+
 @media screen and (max-width: 800px) {
   #userForm {
     margin: 20px;

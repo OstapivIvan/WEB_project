@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body onload="loadGame()">
+        <header>  
+            <a href="/pages/game.html" title="Go to website"><h1 id="nav-h1">FootballScore</h1></a>
+        </header>
+        <main>
+            <div id="gameAndResults">
+                <div id="game">
+                    <div id="gameArea"></div>
+                    <div id="gameButtons">
+                        <button id="startButton" onclick="startGame()">Start</button>
+                        <button id="restartButton" onclick="restartGame()" style="display:none;">Restart</button>
+                    </div>
+                    <div id="gameNav">
+                        <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+                        <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+                        <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+                        <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+                    </div>
+                </div>
+                <div id="gameResults">
+                    <h2>Game Results</h2>
+                    <div id="topResults">
+                        <h3>Top 3 results</h3>
+                    </div>
+                    <div id="bottomResults">
+                        <h3>Last 3 results</h3>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; <span id="currentYear"></span> All rights reserved. FootballScore&reg;</p>
+        </footer>
+        <script src="/js/gameScript.js"></script>
+    </body>
+</html>
