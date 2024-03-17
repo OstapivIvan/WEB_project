@@ -37,6 +37,10 @@ menuItems.forEach(item => {
     item.addEventListener('click', event => {
         event.preventDefault();
         const targetId = item.getAttribute('href');
+        if (targetId.startsWith('/pages/')) {
+            window.location.href = targetId;
+            return;
+        }
         const targetElement = document.querySelector(targetId);
         scrollToTopOfElement(targetElement);
     });

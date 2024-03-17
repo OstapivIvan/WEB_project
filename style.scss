@@ -101,9 +101,9 @@ header {
     li {
         display: inline-block;
         color: azure;
-        font-size: 21px;
-        padding: 0px 10px;
-        margin: 0px 15px;
+        font-size: 19px;
+        padding: 0px 5px;
+        margin: 0px 5px;
         transition: all 0.5s ease;
         &:hover {
             color: $clr_hover_link;
@@ -364,7 +364,7 @@ button {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 40px 0;
+    margin: 40px 100px;
   
     #gameNav {
       text-align: center;
@@ -383,16 +383,16 @@ button {
 #gameAndResults {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-#game,
-#gameResults {
-    width: 50%; 
-}
 canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
+}
+.additionPageHeader{
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 800px) {
@@ -423,8 +423,7 @@ canvas {
         display: block;
     }
     h1 {
-        order: 2;
-        margin-left: 7%;
+        display: none;
     }
     .menu {
         position: relative;
